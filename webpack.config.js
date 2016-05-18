@@ -24,8 +24,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist/"),
     library: "ReactBootstrapDatetimepicker",
-    libraryTarget: "umd",
-    filename: "react-bootstrap-datetimepicker.min.js"
+    libraryTarget: "umd"
   },
 
   resolve: {
