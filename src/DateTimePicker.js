@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import classnames from "classnames";
-import DateTimePickerDate from "./DateTimePickerDate.jsx";
-import DateTimePickerTime from "./DateTimePickerTime.jsx";
+import DateTimePickerDate from "./DateTimePickerDate.js";
+import DateTimePickerTime from "./DateTimePickerTime.js";
 import Constants from "./Constants.js";
 
 export default class DateTimePicker extends Component {

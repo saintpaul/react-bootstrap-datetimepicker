@@ -7,9 +7,9 @@ test-built
 .idea
 docs
 src
+css
 examples
 bower.json
-dist
 webpack.config.js
 TODO.md
 karma.dev.js
