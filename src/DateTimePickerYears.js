@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from "react";
+import moment from "moment";
 import classnames from "classnames";
 
 export default class DateTimePickerYears extends Component {
@@ -11,7 +12,11 @@ export default class DateTimePickerYears extends Component {
   }
 
   renderYears = () => {
+
     var classes, i, year, years;
+    var minDate = this.props.minDate ? this.props.minDate : undefined;
+    var maxDate = this.props.maxDate ? this.props.maxDate : undefined;
+
     years = [];
     year = parseInt(this.props.viewDate.year() / 10, 10) * 10;
     year--;
@@ -19,7 +24,7 @@ export default class DateTimePickerYears extends Component {
     while (i < 11) {
       classes = {
         year: true,
-        old: i === -1 | i === 10,
+        disabled: minDate && year < minDate.year() || maxDate && year > maxDate.year(),
         active: this.props.selectedDate.year() === year
       };
       years.push(<span className={classnames(classes)} key={year}onClick={this.props.setViewYear}>{year}</span>);

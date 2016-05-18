@@ -125,6 +125,8 @@ export default class DateTimePickerDate extends Component {
             setViewYear={this.setViewYear}
             subtractDecade={this.props.subtractDecade}
             viewDate={this.props.viewDate}
+            minDate={this.props.minDate}
+            maxDate={this.props.maxDate}
       />
       );
     } else {
