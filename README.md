@@ -1,3 +1,14 @@
+Fork from [https://github.com/quri/react-bootstrap-datetimepicker](https://github.com/quri/react-bootstrap-datetimepicker).
+Since this project wasn't maintained anymore, we deciced to fork it and to fixes some issues. With this solution, we can share a working component through all our applications.
+
+Build
+===============================
+When you need to apply some modifications to this component, don't forget to add a tag (ex: v1.0.x) and to launch babel's build. 
+
+To run babel, you just need to do following :
+```npm run build-npm```.  
+It will extract generated files to ```/lib```.
+
 react-bootstrap-datetimepicker
 ===============================
 
