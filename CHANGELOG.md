@@ -1,6 +1,6 @@
 # Change Log
 
-## [1.1.0](https://github.com/saintpaul/react-bootstrap-datetimepicker/tree/v1.0.0) (2019-04-05)
+## [1.2.0](https://github.com/saintpaul/react-bootstrap-datetimepicker/tree/v1.0.0) (2019-04-05)
 
 **Technical improvements:**
 
