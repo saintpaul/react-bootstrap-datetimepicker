@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 import moment from "moment";
 import classnames from "classnames";
+import PropTypes from "prop-types";
 
 export default class DateTimePickerDays extends Component {
   static propTypes = {

@@ -1,10 +1,16 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import classnames from "classnames";
 import DateTimePicker from "./DateTimePicker.js";
 import Constants from "./Constants.js";
 
 export default class DateTimeField extends Component {
+
+  widgetRef = undefined;
+  datetimepickerRef = undefined;
+  dtpbuttonRef = undefined;
+
   static defaultProps = {
     dateTime: moment().format("x"),
     format: "x",
@@ -85,7 +91,7 @@ export default class DateTimeField extends Component {
 
 
   onChange = (event) => {
-    const value = event.target == null ? event : event.target.value;
+    const value = event.target === null ? event : event.target.value;
     if (moment(value, this.state.inputFormat, true).isValid()) {
       this.setState({
         selectedDate: moment(value, this.state.inputFormat, true),
@@ -273,7 +279,7 @@ export default class DateTimeField extends Component {
       this.setState({
         showPicker: true
       });
-      gBCR = this.refs.dtpbutton.getBoundingClientRect();
+      gBCR = this.dtpbuttonRef.getBoundingClientRect();
       classes = {
         "bootstrap-datetimepicker-widget": true,
         "dropdown-menu": true
@@ -282,11 +288,11 @@ export default class DateTimeField extends Component {
         top: gBCR.top + window.pageYOffset - document.documentElement.clientTop,
         left: gBCR.left + window.pageXOffset - document.documentElement.clientLeft
       };
-      offset.top = offset.top + this.refs.datetimepicker.offsetHeight;
+      offset.top = offset.top + this.datetimepickerRef.offsetHeight;
       scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-      placePosition = this.props.direction === "up" ? "top" : this.props.direction === "bottom" ? "bottom" : this.props.direction === "auto" ? offset.top + this.refs.widget.offsetHeight > window.offsetHeight + scrollTop && this.refs.widget.offsetHeight + this.refs.datetimepicker.offsetHeight > offset.top ? "top" : "bottom" : void 0;
+      placePosition = this.props.direction === "up" ? "top" : this.props.direction === "bottom" ? "bottom" : this.props.direction === "auto" ? offset.top + this.widgetRef.offsetHeight > window.offsetHeight + scrollTop && this.widgetRef.offsetHeight + this.datetimepickerRef.offsetHeight > offset.top ? "top" : "bottom" : void 0;
       if (placePosition === "top") {
-        offset.top = -this.refs.widget.offsetHeight - this.clientHeight - 2;
+        offset.top = -this.widgetRef.offsetHeight - this.clientHeight - 2;
         classes.top = true;
         classes.bottom = false;
         classes["pull-right"] = true;
@@ -362,7 +368,7 @@ export default class DateTimeField extends Component {
                   maxDate={this.props.maxDate}
                   minDate={this.props.minDate}
                   mode={this.props.mode}
-                  ref="widget"
+                  ref={r => this.widgetRef = r}
                   selectedDate={this.state.selectedDate}
                   setSelectedDate={this.setSelectedDate}
                   setSelectedHour={this.setSelectedHour}
@@ -384,9 +390,9 @@ export default class DateTimeField extends Component {
                   widgetClasses={this.state.widgetClasses}
                   widgetStyle={this.state.widgetStyle}
             />
-            <div className={"input-group date " + this.size()} ref="datetimepicker">
+            <div className={"input-group date " + this.size()} ref={r => this.datetimepickerRef = r}>
               <input className="form-control" onChange={this.onChange} type="text" value={this.state.inputValue} {...this.props.inputProps}/>
-              <span className="input-group-addon" onBlur={this.onBlur} onClick={this.onClick} ref="dtpbutton">
+              <span className="input-group-addon" onBlur={this.onBlur} onClick={this.onClick} ref={r => this.dtpbuttonRef = r}>
                 <span className={classnames("glyphicon", this.state.buttonIcon)} />
               </span>
             </div>
