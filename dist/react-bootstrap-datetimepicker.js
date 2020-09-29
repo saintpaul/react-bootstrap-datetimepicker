@@ -192,21 +192,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 
 	    _defineProperty(_assertThisInitialized(_this), "setSelectedDate", function (e) {
-	      console.log("e: ", e);
-	      console.log("target: ", e.target);
 	      var target = e.target;
 
 	      if (target.className && !target.className.match(/disabled/g)) {
 	        var month;
 	        if (target.className.indexOf("new") >= 0) month = _this.state.viewDate.month() + 1;else if (target.className.indexOf("old") >= 0) month = _this.state.viewDate.month() - 1;else month = _this.state.viewDate.month();
-
-	        _this.setState({
+	        return _this.setState({
 	          selectedDate: _this.state.selectedDate.isValid() ? _this.state.viewDate.clone().month(month).date(parseInt(e.target.innerHTML)).hour(_this.state.selectedDate.hours()).minute(_this.state.selectedDate.minutes()) : _this.state.viewDate.clone().month(month).date(parseInt(e.target.innerHTML))
-	        }, function () {// this.closePicker();
-	          // this.props.onChange(this.state.selectedDate.format(this.props.format));
-	          // return this.setState({
-	          //   inputValue: this.state.selectedDate.format(this.state.inputFormat)
-	          // });
+	        }, function () {
+	          this.closePicker();
+	          this.props.onChange(this.state.selectedDate.format(this.props.format));
+	          return this.setState({
+	            inputValue: this.state.selectedDate.format(this.state.inputFormat)
+	          });
 	        });
 	      }
 	    });

@@ -62,7 +62,7 @@ export default class DateTimeField extends Component {
       showDatePicker: this.props.mode !== Constants.MODE_TIME,
       showTimePicker: this.props.mode === Constants.MODE_TIME,
       inputFormat: this.resolvePropsInputFormat(),
-      buttonIcon: this.props.mode === Constants.MODE_TIME ? "glyphicon-time" : "glyphicon-calendar",
+      buttonIcon: this.props.mode === Constants.MODE_TIME ? "fa-time" : "fa-calendar",
       widgetStyle: {
         display: "block",
         position: "absolute",
@@ -392,8 +392,10 @@ export default class DateTimeField extends Component {
             />
             <div className={"input-group date " + this.size()} ref={r => this.datetimepickerRef = r}>
               <input className="form-control" onChange={this.onChange} type="text" value={this.state.inputValue} {...this.props.inputProps}/>
-              <span className="input-group-addon" onBlur={this.onBlur} onClick={this.onClick} ref={r => this.dtpbuttonRef = r}>
-                <span className={classnames("glyphicon", this.state.buttonIcon)} />
+              <span className="input-group-append" onBlur={this.onBlur} onClick={this.onClick} ref={r => this.dtpbuttonRef = r}>
+                <span className="input-group-text">
+                  <span className={classnames("fa", this.state.buttonIcon)} />
+                </span>
               </span>
             </div>
           </div>
